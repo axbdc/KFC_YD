@@ -228,9 +228,19 @@
             cursor: pointer;
             width: 100%;
             border-radius: 4px;
+            margin-bottom: 8px;
         }
 
-        .cta-btn.primary { background: var(--kfc-red); color: white; }
+        .cta-btn.primary { background: var(--kfc-red); color: white; margin-bottom: 0; }
+        .cta-btn.ar-experience { 
+            background: rgba(255, 255, 255, 0.15); 
+            border: 1px solid white; 
+            color: white; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
         /* RADAR SCANNER - MELHORADO */
         .radar-screen { background: #000; justify-content: center; align-items: center; }
@@ -330,8 +340,8 @@
 
                     <div class="screens-container">
                         
-                        <!-- ECRÃ 1: BANNER INICIAL (AGORA COM IMAGEM DE COMIDA) -->
-                        <div class="screen active" id="s1" style="background-image: url('Gemini_Generated_Image_tf8zqwtf8zqwtf8z.png');">
+                        <!-- ECRÃ 1: BANNER INICIAL -->
+                        <div class="screen active" id="s1" style="background-image: url('Gemini_Generated_Image_tf8zqwtf8zqwtf8z');">
                             <div class="overlay">
                                 <div class="tagline">Lunch is Calling</div>
                                 <h2>What's for<br>Lunch?</h2>
@@ -346,17 +356,20 @@
                                 <div class="tagline">South Africa Classic</div>
                                 <h2>Streetwise 3</h2>
                                 <p>3 pieces of Original Recipe chicken & medium chips. The local legend.</p>
-                                <button class="cta-btn" onclick="changeStep(1)">Explore Menu</button>
+                                <button class="cta-btn primary" onclick="changeStep(1)">Explore Menu</button>
                             </div>
                         </div>
 
-                        <!-- ECRÃ 3: DUNKED WINGS -->
+                        <!-- ECRÃ 3: DUNKED WINGS (COM NOVO CTA AR) -->
                         <div class="screen" id="s3" style="background-image: url('https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80');">
                             <div class="overlay">
                                 <div class="tagline">Customer Favourite</div>
                                 <h2>Dunked Wings</h2>
                                 <p>10 Wings deliciously dunked in our iconic secret sauce. Irresistible.</p>
-                                <button class="cta-btn" onclick="changeStep(1)">More Flavour</button>
+                                <button class="cta-btn ar-experience">
+                                    <i class="fa-solid fa-cube"></i> View in AR Experience
+                                </button>
+                                <button class="cta-btn primary" onclick="changeStep(1)">More Flavour</button>
                             </div>
                         </div>
 
@@ -366,7 +379,7 @@
                                 <div class="tagline">The Ultimate Lunch</div>
                                 <h2>Zinger Box</h2>
                                 <p>Zinger Burger, 1 piece of chicken, chips & drink. For the bold.</p>
-                                <button class="cta-btn" onclick="changeStep(1)">Scan Area</button>
+                                <button class="cta-btn primary" onclick="changeStep(1)">Scan Area</button>
                             </div>
                         </div>
 
@@ -388,7 +401,7 @@
                         </div>
 
                         <!-- ECRÃ 6: RESULTADO FINAL -->
-                        <div class="screen" id="s6" style="background-image: url('https://static.where-e.com/France/Kfc-Strasbourg-Centre-Ville_9044c2390425be81103c0f2cb24ad160.jpg');">
+                        <div class="screen" id="s6" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80');">
                             <div class="overlay">
                                 <div class="tagline">Lunch Located!</div>
                                 <h2>KFC<br>Braamfontein</h2>
