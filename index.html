@@ -360,13 +360,13 @@
                             </div>
                         </div>
 
-                        <!-- ECRÃ 3: DUNKED WINGS (COM NOVO CTA AR) -->
+                        <!-- ECRÃ 3: DUNKED WINGS (COM NOVO CTA AR E LÓGICA DE DETEÇÃO) -->
                         <div class="screen" id="s3" style="background-image: url('https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80');">
                             <div class="overlay">
                                 <div class="tagline">Customer Favourite</div>
                                 <h2>Dunked Wings</h2>
                                 <p>10 Wings deliciously dunked in our iconic secret sauce. Irresistible.</p>
-                                <button class="cta-btn ar-experience">
+                                <button class="cta-btn ar-experience" onclick="launchAR()">
                                     <i class="fa-solid fa-cube"></i> View in AR Experience
                                 </button>
                                 <button class="cta-btn primary" onclick="changeStep(1)">More Flavour</button>
@@ -449,11 +449,45 @@
         let currentStep = 1;
         const totalSteps = 6;
 
+        /**
+         * Lógica para abrir Realidade Aumentada (.glb para Android, .usdz para iOS)
+         */
+        function launchAR() {
+            // Links para os ficheiros (substituir pelos links reais alojados num servidor HTTPS)
+            const glbUrl = "https://model-viewer.dev/shared-assets/models/Astronaut.glb"; 
+            const usdzUrl = "https://model-viewer.dev/shared-assets/models/Astronaut.usdz";
+
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+
+            if (isIOS) {
+                // Lógica nativa iOS Quick Look
+                const anchor = document.createElement('a');
+                anchor.setAttribute('rel', 'ar');
+                anchor.setAttribute('href', usdzUrl);
+                
+                // Imagem invisível necessária para disparar o Quick Look nalgumas versões do iOS
+                const img = document.createElement('img');
+                img.src = "https://upload.wikimedia.org/wikipedia/en/b/bf/KFC_logo.svg";
+                img.style.width = "0";
+                img.style.height = "0";
+                anchor.appendChild(img);
+                
+                document.body.appendChild(anchor);
+                anchor.click();
+                document.body.removeChild(anchor);
+            } else {
+                // Lógica nativa Android Scene Viewer (via Google Search App)
+                // Se o Android detetar este Intent, abre o modelo em AR automaticamente
+                const sceneViewerIntent = `intent://arvr.google.com/scene-viewer/1.0?file=${glbUrl}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://www.kfc.co.za;end;`;
+                window.location.href = sceneViewerIntent;
+            }
+        }
+
         function updateNavigation() {
             const btnPrev = document.getElementById('btn-prev');
             const btnNext = document.getElementById('btn-next');
 
-            // Lógica de visibilidade das setas
             if (currentStep === 1) {
                 btnPrev.classList.add('hidden');
                 btnNext.classList.remove('hidden');
@@ -467,7 +501,6 @@
                 btnNext.classList.remove('hidden');
             }
 
-            // Lógica das barras de progresso
             for(let i=1; i<=totalSteps; i++) {
                 const bar = document.getElementById(`b${i}`);
                 bar.classList.remove('active', 'viewed');
