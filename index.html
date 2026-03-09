@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* --- PRESENTATION LAYOUT --- */
+        /* --- LAYOUT DA APRESENTAÇÃO --- */
         .presentation-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -32,7 +32,7 @@
             text-align: center;
         }
 
-        /* HEADER AREA */
+        /* ÁREA DO CABEÇALHO */
         .header-section {
             margin-bottom: 60px;
         }
@@ -64,7 +64,7 @@
             margin: 0 auto;
         }
 
-        /* MOCKUP SECTION */
+        /* TÍTULO DO MOCKUP */
         .mockup-intro-title {
             margin: 100px 0 50px;
             position: relative;
@@ -96,7 +96,7 @@
             font-size: 1.1rem;
         }
 
-        /* --- SMARTPHONE FRAME --- */
+        /* --- FRAME DO TELEMÓVEL --- */
         .mockup-display {
             display: flex;
             justify-content: center;
@@ -114,7 +114,7 @@
             box-shadow: 0 40px 100px rgba(0,0,0,0.8);
         }
 
-        /* --- AD CONTENT INSIDE PHONE --- */
+        /* --- CONTEÚDO DENTRO DO TELEMÓVEL --- */
         .ad-container {
             width: 100%;
             height: 100%;
@@ -194,6 +194,8 @@
 
         .screen.active { display: flex; animation: fadeIn 0.4s ease-out; }
 
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         .overlay {
             position: absolute;
             top: 0;
@@ -230,7 +232,7 @@
 
         .cta-btn.primary { background: var(--kfc-red); color: white; }
 
-        /* RADAR SCANNER - IMPROVED */
+        /* RADAR SCANNER - MELHORADO */
         .radar-screen { background: #000; justify-content: center; align-items: center; }
         .radar-container {
             width: 220px; height: 220px; position: relative; border-radius: 50%;
@@ -270,7 +272,7 @@
         @keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes blipFade { 0%, 50%, 100% { opacity: 0; transform: scale(0.6); } 60% { opacity: 1; transform: scale(1.1); } 80% { opacity: 0; } }
 
-        /* --- CARDS SECTION --- */
+        /* --- SECÇÃO DE CARDS --- */
         .cards-section { margin-bottom: 120px; }
         .cards-section h2 { font-family: 'Poppins'; font-size: 2.2rem; text-transform: uppercase; margin-bottom: 60px; }
         .cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -280,7 +282,7 @@
         .info-card h3 { font-family: 'Poppins'; font-size: 1.6rem; margin-bottom: 20px; text-transform: capitalize; }
         .info-card p { color: #888; line-height: 1.6; font-size: 1.05rem; }
 
-        /* --- FOOTER --- */
+        /* --- RODAPÉ --- */
         .footer-section { padding: 100px 0 60px; border-top: 1px solid #222; }
         .footer-logo { font-family: 'Poppins'; font-weight: 900; font-size: 3rem; color: var(--kfc-red); text-transform: uppercase; margin-bottom: 30px; }
         .footer-sub { color: #555; font-size: 1rem; letter-spacing: 1px; }
@@ -292,27 +294,27 @@
 
     <div class="presentation-wrapper">
         
-        <!-- HEADER -->
+        <!-- CABEÇALHO -->
         <section class="header-section">
             <span class="tag">Creative Media Proposal</span>
             <h1>The Lunch Detector</h1>
             <p class="subtitle">Rich Media Experience Mockup for KFC South Africa</p>
         </section>
 
-        <!-- MOCKUP TITLE -->
+        <!-- TÍTULO DO MOCKUP -->
         <div class="mockup-intro-title">
             <h2>The User Experience</h2>
         </div>
         <p class="mockup-intro-desc">Interactive mobile flow simulation (Idea 3: Hunger Map)</p>
 
-        <!-- INTERACTIVE MOCKUP -->
+        <!-- MOCKUP INTERATIVO -->
         <section class="mockup-display">
             <div class="phone-frame">
                 <div class="ad-container">
                     
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/KFC_Logo.svg" class="logo-top" alt="KFC Logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/b/bf/KFC_logo.svg" class="logo-top" alt="KFC Logo">
 
-                    <!-- Progress Headers (6 Steps) -->
+                    <!-- Indicadores de Progresso (6 Passos) -->
                     <div class="progress-header">
                         <div class="bar viewed" id="b1"></div>
                         <div class="bar" id="b2"></div>
@@ -322,24 +324,23 @@
                         <div class="bar" id="b6"></div>
                     </div>
 
-                    <!-- Navigation Arrows -->
+                    <!-- Setas de Navegação -->
                     <div class="nav-arrow arrow-left hidden" id="btn-prev" onclick="changeStep(-1)"><i class="fa-solid fa-chevron-left"></i></div>
                     <div class="nav-arrow arrow-right" id="btn-next" onclick="changeStep(1)"><i class="fa-solid fa-chevron-right"></i></div>
 
                     <div class="screens-container">
                         
-                        <!-- SCREEN 1: THE HUD/BANNER (INITIAL) -->
-                            <div class="screen" id="s2" style="background-image: url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80');">
+                        <!-- ECRÃ 1: BANNER INICIAL (AGORA COM IMAGEM DE COMIDA) -->
+                        <div class="screen active" id="s1" style="background-image: url('https://images.unsplash.com/photo-1513639776629-7b61b0ac49cb?auto=format&fit=crop&w=600&q=80');">
                             <div class="overlay">
-                                <div class="tagline">Scanner Initialized</div>
-                                <h2>Detecting<br>Your Hunger</h2>
-                                <p>Our sensors detect high hunger levels in this area. Ready for the solution?</p>
+                                <div class="tagline">Lunch is Calling</div>
+                                <h2>What's for<br>Lunch?</h2>
+                                <p>Don't settle for less. Find the nearest KFC and satisfy your cravings now.</p>
                                 <button class="cta-btn primary" onclick="changeStep(1)">Find Out More</button>
                             </div>
-                            <style>@keyframes hudPulse { 0%, 100% { opacity: 0.1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.05); } }</style>
                         </div>
 
-                        <!-- SCREEN 2: STREETWISE 3 -->
+                        <!-- ECRÃ 2: STREETWISE 3 -->
                         <div class="screen" id="s2" style="background-image: url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80');">
                             <div class="overlay">
                                 <div class="tagline">South Africa Classic</div>
@@ -349,7 +350,7 @@
                             </div>
                         </div>
 
-                        <!-- SCREEN 3: DUNKED WINGS -->
+                        <!-- ECRÃ 3: DUNKED WINGS -->
                         <div class="screen" id="s3" style="background-image: url('https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80');">
                             <div class="overlay">
                                 <div class="tagline">Customer Favourite</div>
@@ -359,7 +360,7 @@
                             </div>
                         </div>
 
-                        <!-- SCREEN 4: ZINGER BOX MEAL -->
+                        <!-- ECRÃ 4: ZINGER BOX MEAL -->
                         <div class="screen" id="s4" style="background-image: url('https://images.unsplash.com/photo-1513639776629-7b61b0ac49cb?auto=format&fit=crop&w=600&q=80');">
                             <div class="overlay">
                                 <div class="tagline">The Ultimate Lunch</div>
@@ -369,7 +370,7 @@
                             </div>
                         </div>
 
-                        <!-- SCREEN 5: THE RADAR SONAR -->
+                        <!-- ECRÃ 5: RADAR SONAR -->
                         <div class="screen radar-screen" id="s5">
                             <div class="radar-container">
                                 <div class="radar-cross"></div>
@@ -386,7 +387,7 @@
                             </div>
                         </div>
 
-                        <!-- SCREEN 6: FINAL RESULT -->
+                        <!-- ECRÃ 6: RESULTADO FINAL -->
                         <div class="screen" id="s6" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80');">
                             <div class="overlay">
                                 <div class="tagline">Lunch Located!</div>
@@ -401,7 +402,7 @@
             </div>
         </section>
 
-        <!-- WHY THIS FORMAT SECTION -->
+        <!-- SECÇÃO PORQUÊ ESTE FORMATO -->
         <section class="cards-section">
             <h2>Why This Format?</h2>
             <div class="cards-container">
@@ -423,7 +424,7 @@
             </div>
         </section>
 
-        <!-- FOOTER -->
+        <!-- RODAPÉ -->
         <footer class="footer-section">
             <div class="footer-logo">It's Finger Lickin' Good</div>
             <div class="footer-sub">KFC South Africa • Lunch Campaign • Rich Media Proposal 2024</div>
@@ -439,7 +440,7 @@
             const btnPrev = document.getElementById('btn-prev');
             const btnNext = document.getElementById('btn-next');
 
-            // Setas Visibility Logic
+            // Lógica de visibilidade das setas
             if (currentStep === 1) {
                 btnPrev.classList.add('hidden');
                 btnNext.classList.remove('hidden');
@@ -453,7 +454,7 @@
                 btnNext.classList.remove('hidden');
             }
 
-            // Progress Bars Logic
+            // Lógica das barras de progresso
             for(let i=1; i<=totalSteps; i++) {
                 const bar = document.getElementById(`b${i}`);
                 bar.classList.remove('active', 'viewed');
