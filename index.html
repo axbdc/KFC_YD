@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC - Mockup Interactive Rich Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --kfc-red: #e4002b;
+            --kfc-black: #000000;
+            --kfc-white: #ffffff;
+            --bg-gray: #f4f4f4;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .presentation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        section {
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 120px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 { font-size: 3.5rem; color: var(--kfc-red); margin-bottom: 10px; }
+        .subtitle { font-size: 1.2rem; color: #888; margin-bottom: 50px; }
+
+        /* --- MOBILE MOCKUP STYLING --- */
+        .mockup-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .phone-frame {
+            width: 320px;
+            height: 650px;
+            background: #222;
+            border: 8px solid #333;
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        /* Mock Site Content */
+        .mock-nav { height: 50px; background: #eee; width: 100%; display: flex; align-items: center; padding: 0 15px; box-sizing: border-box; justify-content: space-between; }
+        .mock-article { padding: 15px; text-align: left; }
+        .mock-text { height: 10px; background: #ddd; margin-bottom: 8px; border-radius: 5px; }
+        .mock-text.short { width: 60%; }
+
+        /* THE ACTUAL RICH MEDIA AD */
+        .rich-media-ad {
+            width: 100%;
+            background: var(--kfc-black);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .ad-step { height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+
+        /* Step 1: Tease */
+        .step-tease { background: linear-gradient(45deg, #000, #222); }
+        .ad-logo { width: 50px; margin-bottom: 15px; }
+        .ad-title { font-family: 'Poppins'; font-size: 1.2rem; margin: 0; text-align: center; }
+
+        /* Step 2: Scanning */
+        .radar-container { position: relative; width: 100px; height: 100px; margin-bottom: 10px; }
+        .radar { 
+            width: 100%; height: 100%; border: 2px solid var(--kfc-red); border-radius: 50%; 
+            position: relative; animation: pulse 1.5s infinite; 
+        }
+        .radar-line {
+            position: absolute; width: 50%; height: 2px; background: var(--kfc-red);
+            top: 50%; left: 50%; transform-origin: left; animation: rotate 2s linear infinite;
+        }
+
+        /* Step 3: Result/Map */
+        .map-mockup { width: 100%; height: 120px; background: #e0e0e0; border-radius: 10px; margin-top: 10px; position: relative; overflow: hidden; }
+        .map-pin { position: absolute; top: 40%; left: 50%; color: var(--kfc-red); font-size: 24px; animation: bounce 1s infinite; }
+        .distance-tag { background: var(--kfc-red); padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; margin-top: 10px; }
+
+        .cta-button {
+            background: var(--kfc-red); color: white; border: none; padding: 12px 25px; 
+            border-radius: 5px; font-weight: bold; font-family: 'Poppins'; margin-top: 15px;
+            cursor: pointer; text-transform: uppercase; width: 80%;
+        }
+
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulse { 0% { opacity: 0.3; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+        /* Info Tiles */
+        .step-label {
+            margin-top: 20px; font-weight: bold; color: var(--kfc-red); font-size: 1.1rem;
+        }
+        .step-desc { font-size: 0.9rem; color: #ccc; max-width: 250px; margin: 10px auto; }
+
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        
+        <section id="intro">
+            <p style="color: var(--kfc-red); font-weight: bold; letter-spacing: 2px;">PROPOSTA CRIATIVA DE MÍDIA</p>
+            <h1>O Detector de Almoço</h1>
+            <p class="subtitle">Mockup de Experiência Rich Media para KFC South Africa</p>
+        </section>
+
+        <section id="mockup">
+            <h2 style="color: white; border-bottom: 2px solid var(--kfc-red); display: inline-block; padding-bottom: 10px;">A Experiência do Utilizador</h2>
+            <p style="margin-top: 20px; color: #aaa;">Simulação do fluxo interativo no telemóvel (Ideia 3: Mapa da Fome)</p>
+
+            <div class="mockup-grid">
+                
+                <!-- PASSO 1 -->
+                <div class="mockup-item">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="mock-nav"><i class="fa-solid fa-bars"></i> <span>Daily News</span> <i class="fa-solid fa-magnifying-glass"></i></div>
+                            <div class="mock-article">
+                                <div class="mock-text" style="width: 40%; background: #999;"></div>
+                                <div class="mock-text"></div>
+                                <div class="mock-text"></div>
+                            </div>
+                            <!-- Banner Tease -->
+                            <div class="rich-media-ad">
+                                <div class="ad-step step-tease">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/b/bf/KFC_logo.svg" class="ad-logo" alt="KFC Logo">
+                                    <p class="ad-title">WHAT'S FOR LUNCH?</p>
+                                    <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.8;">TAP TO FIND OUT</p>
+                                </div>
+                            </div>
+                            <div class="mock-article">
+                                <div class="mock-text"></div>
+                                <div class="mock-text"></div>
+                                <div class="mock-text short"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="step-label">01. O GANCHO</p>
+                    <p class="step-desc">O anúncio aparece no scroll de notícias. O design é focado no branding KFC e na curiosidade.</p>
+                </div>
+
+                <!-- PASSO 2 -->
+                <div class="mockup-item">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="mock-nav"><i class="fa-solid fa-bars"></i> <span>Daily News</span> <i class="fa-solid fa-magnifying-glass"></i></div>
+                            <!-- Banner Radar -->
+                            <div class="rich-media-ad" style="height: 100%;">
+                                <div class="ad-step" style="height: 600px; background: #000;">
+                                    <div class="radar-container">
+                                        <div class="radar"></div>
+                                        <div class="radar-line"></div>
+                                    </div>
+                                    <p class="ad-title" style="color: var(--kfc-red);">SCANNING FOR LUNCH...</p>
+                                    <p style="color: white; font-size: 0.8rem; margin-top: 15px;">Detecting nearby KFC stores</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="step-label">02. A INTERAÇÃO</p>
+                    <p class="step-desc">Ao clicar, o banner expande-se ou ativa a animação de radar. O sistema acede ao GPS do browser.</p>
+                </div>
+
+                <!-- PASSO 3 -->
+                <div class="mockup-item">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="mock-nav"><i class="fa-solid fa-bars"></i> <span>Daily News</span> <i class="fa-solid fa-magnifying-glass"></i></div>
+                            <!-- Banner Result -->
+                            <div class="rich-media-ad" style="height: 100%;">
+                                <div class="ad-step" style="height: 600px; background: #111; justify-content: start; padding-top: 50px;">
+                                    <img src="https://www.kfc.co.za/Content/Images/Global/KFC_Logo.png" style="width: 80px;" alt="KFC Logo">
+                                    <h3 style="color: white; margin-top: 30px; font-family: 'Poppins';">LUNCH DETECTED!</h3>
+                                    
+                                    <div class="map-mockup">
+                                        <div style="width: 100%; height: 100%; background: url('https://upload.wikimedia.org/wikipedia/commons/e/e4/Google_Maps_icon_%282020%29.svg') center/contain no-repeat; opacity: 0.1;"></div>
+                                        <i class="fa-solid fa-location-dot map-pin"></i>
+                                    </div>
+
+                                    <div class="distance-tag">KFC Braamfontein - 450m away</div>
+                                    <p style="color: #aaa; font-size: 0.8rem; margin-top: 15px; padding: 0 20px;">You are 5 minutes away from a Streetwise Bucket.</p>
+                                    
+                                    <button class="cta-button">LEVA-ME LÁ <i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="step-label">03. A CONVERSÃO</p>
+                    <p class="step-desc">O resultado final mostra o mapa real e a distância. O CTA abre o Google Maps diretamente.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="tech">
+            <h2>Porquê este Formato?</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; text-align: left;">
+                
+                <div style="background: #222; padding: 30px; border-radius: 20px;">
+                    <i class="fa-solid fa-bolt" style="color: var(--kfc-red); font-size: 2rem;"></i>
+                    <h3 style="margin: 20px 0;">Performance</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">Carrega 5x mais rápido que uma WebApp. O utilizador não precisa de sair da página para decidir o almoço.</p>
+                </div>
+
+                <div style="background: #222; padding: 30px; border-radius: 20px;">
+                    <i class="fa-solid fa-fingerprint" style="color: var(--kfc-red); font-size: 2rem;"></i>
+                    <h3 style="margin: 20px 0;">Personalização</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">O conteúdo do anúncio muda dinamicamente com base na localização (Latitude/Longitude) de cada utilizador na África do Sul.</p>
+                </div>
+
+                <div style="background: #222; padding: 30px; border-radius: 20px;">
+                    <i class="fa-solid fa-chart-pie" style="color: var(--kfc-red); font-size: 2rem;"></i>
+                    <h3 style="margin: 20px 0;">Métricas Reais</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">Rastreamos não só os cliques, mas o tempo de interação com o radar e a intenção de visita à loja (cliques no mapa).</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="footer">
+            <h1 style="font-size: 2rem;">IT'S FINGER LICKIN' GOOD</h1>
+            <p style="color: #888;">KFC South Africa • Campanha de Almoço • Proposta Rich Media 2024</p>
+        </section>
+
+    </div>
+
+</body>
+</html>
