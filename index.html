@@ -3,265 +3,523 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KFC - Mockup Interactive Rich Media</title>
+    <title>KFC South Africa - Lunch Detector Presentation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --kfc-red: #e4002b;
             --kfc-black: #000000;
             --kfc-white: #ffffff;
-            --bg-gray: #f4f4f4;
+            --radar-glow: rgba(228, 0, 43, 0.4);
+            --dark-card: #151515;
         }
 
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background-color: #1a1a1a;
+            background-color: #0c0c0c;
             color: white;
             overflow-x: hidden;
         }
 
-        .presentation-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        section {
-            width: 100%;
-            max-width: 1100px;
-            margin-bottom: 120px;
+        /* --- PRESENTATION LAYOUT --- */
+        .presentation-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
             text-align: center;
         }
 
-        h1, h2 {
-            font-family: 'Poppins', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -1px;
+        /* HEADER AREA */
+        .header-section {
+            margin-bottom: 60px;
         }
 
-        h1 { font-size: 3.5rem; color: var(--kfc-red); margin-bottom: 10px; }
-        .subtitle { font-size: 1.2rem; color: #888; margin-bottom: 50px; }
+        .header-section .tag {
+            color: var(--kfc-red);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: block;
+        }
 
-        /* --- MOBILE MOCKUP STYLING --- */
-        .mockup-grid {
+        .header-section h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4.5rem;
+            color: var(--kfc-red);
+            margin: 0 0 30px;
+            text-transform: uppercase;
+            line-height: 1;
+            font-weight: 900;
+        }
+
+        .header-section .subtitle {
+            font-size: 1.5rem;
+            color: #888;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* MOCKUP SECTION */
+        .mockup-intro-title {
+            margin: 100px 0 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .mockup-intro-title h2 {
+            font-family: 'Poppins';
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin: 0;
+            padding-bottom: 15px;
+        }
+
+        .mockup-intro-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background-color: var(--kfc-red);
+        }
+
+        .mockup-intro-desc {
+            color: #888;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        /* --- SMARTPHONE FRAME --- */
+        .mockup-display {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 50px;
+            justify-content: center;
+            margin-bottom: 100px;
         }
 
         .phone-frame {
             width: 320px;
-            height: 650px;
-            background: #222;
-            border: 8px solid #333;
+            height: 660px; 
+            background: #000;
+            border: 10px solid #1a1a1a;
             border-radius: 40px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
         }
 
-        .phone-screen {
+        /* --- AD CONTENT INSIDE PHONE --- */
+        .ad-container {
             width: 100%;
             height: 100%;
-            background: white;
             position: relative;
+            background: #000;
             display: flex;
             flex-direction: column;
-            color: #333;
         }
 
-        /* Mock Site Content */
-        .mock-nav { height: 50px; background: #eee; width: 100%; display: flex; align-items: center; padding: 0 15px; box-sizing: border-box; justify-content: space-between; }
-        .mock-article { padding: 15px; text-align: left; }
-        .mock-text { height: 10px; background: #ddd; margin-bottom: 8px; border-radius: 5px; }
-        .mock-text.short { width: 60%; }
+        .logo-top {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            z-index: 101;
+        }
 
-        /* THE ACTUAL RICH MEDIA AD */
-        .rich-media-ad {
+        .progress-header {
+            display: flex;
+            gap: 4px;
+            padding: 15px 15px;
+            position: absolute;
+            top: 5px;
             width: 100%;
-            background: var(--kfc-black);
+            box-sizing: border-box;
+            z-index: 100;
+        }
+
+        .bar {
+            height: 3px;
+            flex: 1;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+
+        .bar.active { background: var(--kfc-white); }
+        .bar.viewed { background: var(--kfc-red); }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(228, 0, 43, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s ease;
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 200;
+            backdrop-filter: blur(8px);
         }
 
-        .ad-step { height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+        .arrow-left { left: 10px; }
+        .arrow-right { right: 10px; }
+        .nav-arrow.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-        /* Step 1: Tease */
-        .step-tease { background: linear-gradient(45deg, #000, #222); }
-        .ad-logo { width: 50px; margin-bottom: 15px; }
-        .ad-title { font-family: 'Poppins'; font-size: 1.2rem; margin: 0; text-align: center; }
+        .screens-container { width: 100%; height: 100%; position: relative; }
 
-        /* Step 2: Scanning */
-        .radar-container { position: relative; width: 100px; height: 100px; margin-bottom: 10px; }
-        .radar { 
-            width: 100%; height: 100%; border: 2px solid var(--kfc-red); border-radius: 50%; 
-            position: relative; animation: pulse 1.5s infinite; 
-        }
-        .radar-line {
-            position: absolute; width: 50%; height: 2px; background: var(--kfc-red);
-            top: 50%; left: 50%; transform-origin: left; animation: rotate 2s linear infinite;
-        }
-
-        /* Step 3: Result/Map */
-        .map-mockup { width: 100%; height: 120px; background: #e0e0e0; border-radius: 10px; margin-top: 10px; position: relative; overflow: hidden; }
-        .map-pin { position: absolute; top: 40%; left: 50%; color: var(--kfc-red); font-size: 24px; animation: bounce 1s infinite; }
-        .distance-tag { background: var(--kfc-red); padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; margin-top: 10px; }
-
-        .cta-button {
-            background: var(--kfc-red); color: white; border: none; padding: 12px 25px; 
-            border-radius: 5px; font-weight: bold; font-family: 'Poppins'; margin-top: 15px;
-            cursor: pointer; text-transform: uppercase; width: 80%;
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            background-size: cover;
+            background-position: center;
         }
 
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes pulse { 0% { opacity: 0.3; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        .screen.active { display: flex; animation: fadeIn 0.4s ease-out; }
 
-        /* Info Tiles */
-        .step-label {
-            margin-top: 20px; font-weight: bold; color: var(--kfc-red); font-size: 1.1rem;
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, transparent 40%, rgba(0,0,0,0.95) 85%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px 20px 60px;
+            box-sizing: border-box;
+            text-align: left;
         }
-        .step-desc { font-size: 0.9rem; color: #ccc; max-width: 250px; margin: 10px auto; }
 
+        .tagline { color: var(--kfc-red); font-weight: 800; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 8px; text-transform: uppercase; }
+        .overlay h2 { font-family: 'Poppins', sans-serif; font-size: 1.8rem; margin: 0; line-height: 1.1; text-transform: uppercase; font-weight: 900; color: white; }
+        .overlay p { color: #ccc; font-size: 0.9rem; margin: 12px 0 25px; line-height: 1.4; }
+
+        .cta-btn {
+            background: var(--kfc-white);
+            color: var(--kfc-black);
+            border: none;
+            padding: 15px;
+            font-family: 'Inter';
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .cta-btn.primary { background: var(--kfc-red); color: white; }
+
+        /* RADAR SCANNER */
+        .radar-screen { background: #000; justify-content: center; align-items: center; }
+        .radar-container {
+            width: 220px; height: 220px; position: relative; border-radius: 50%;
+            background: repeating-radial-gradient(circle, transparent, transparent 20px, rgba(228, 0, 43, 0.1) 21px);
+            border: 1px solid rgba(228, 0, 43, 0.3);
+            display: flex; justify-content: center; align-items: center;
+        }
+        .radar-sweep {
+            position: absolute; width: 50%; height: 100%; top: 0; left: 50%;
+            background: conic-gradient(from 0deg, var(--radar-glow), transparent 90deg);
+            transform-origin: left center; animation: sweep 3s linear infinite;
+            border-left: 2px solid var(--kfc-red);
+        }
+        .blip {
+            position: absolute; width: 8px; height: 8px; background: var(--kfc-red); border-radius: 50%;
+            box-shadow: 0 0 10px var(--kfc-red); opacity: 0; animation: blipFade 3s infinite;
+        }
+        .blip-1 { top: 30%; left: 70%; animation-delay: 0.5s; }
+        .blip-2 { top: 60%; left: 25%; animation-delay: 1.8s; }
+        @keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes blipFade { 0%, 50%, 100% { opacity: 0; transform: scale(0.5); } 60% { opacity: 1; transform: scale(1.2); } }
+
+        /* --- CARDS SECTION (PORQUÊ ESTE FORMATO?) --- */
+        .cards-section {
+            margin-bottom: 120px;
+        }
+
+        .cards-section h2 {
+            font-family: 'Poppins';
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background-color: var(--dark-card);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .info-card i {
+            color: var(--kfc-red);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .info-card h3 {
+            font-family: 'Poppins';
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            text-transform: capitalize;
+        }
+
+        .info-card p {
+            color: #888;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        /* --- FOOTER --- */
+        .footer-section {
+            padding: 100px 0 60px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins';
+            font-weight: 900;
+            font-size: 3rem;
+            color: var(--kfc-red);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .footer-sub {
+            color: #555;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-section h1 { font-size: 3rem; }
+            .info-card { padding: 30px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="presentation-container">
+    <div class="presentation-wrapper">
         
-        <section id="intro">
-            <p style="color: var(--kfc-red); font-weight: bold; letter-spacing: 2px;">PROPOSTA CRIATIVA DE MÍDIA</p>
+        <!-- 1. HEADER EXATAMENTE COMO NO PRINT -->
+        <section class="header-section">
+            <span class="tag">Proposta Criativa de Mídia</span>
             <h1>O Detector de Almoço</h1>
             <p class="subtitle">Mockup de Experiência Rich Media para KFC South Africa</p>
         </section>
 
-        <section id="mockup">
-            <h2 style="color: white; border-bottom: 2px solid var(--kfc-red); display: inline-block; padding-bottom: 10px;">A Experiência do Utilizador</h2>
-            <p style="margin-top: 20px; color: #aaa;">Simulação do fluxo interativo no telemóvel (Ideia 3: Mapa da Fome)</p>
+        <!-- 2. MOCKUP TITLE -->
+        <div class="mockup-intro-title">
+            <h2>A Experiência do Utilizador</h2>
+        </div>
+        <p class="mockup-intro-desc">Simulação do fluxo interativo no telemóvel (Ideia 3: Mapa da Fome)</p>
 
-            <div class="mockup-grid">
-                
-                <!-- PASSO 1 -->
-                <div class="mockup-item">
-                    <div class="phone-frame">
-                        <div class="phone-screen">
-                            <div class="mock-nav"><i class="fa-solid fa-bars"></i> <span>Daily News</span> <i class="fa-solid fa-magnifying-glass"></i></div>
-                            <div class="mock-article">
-                                <div class="mock-text" style="width: 40%; background: #999;"></div>
-                                <div class="mock-text"></div>
-                                <div class="mock-text"></div>
+        <!-- 3. O MOCKUP INTERATIVO REFORMULADO -->
+        <section class="mockup-display">
+            <div class="phone-frame">
+                <div class="ad-container">
+                    
+                    <img src="https://upload.wikimedia.org/wikipedia/en/b/bf/KFC_logo.svg" class="logo-top" alt="KFC Logo">
+
+                    <!-- Progress Headers -->
+                    <div class="progress-header">
+                        <div class="bar viewed" id="b1"></div>
+                        <div class="bar" id="b2"></div>
+                        <div class="bar" id="b3"></div>
+                        <div class="bar" id="b4"></div>
+                        <div class="bar" id="b5"></div>
+                        <div class="bar" id="b6"></div>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <div class="nav-arrow arrow-left hidden" id="btn-prev" onclick="changeStep(-1)"><i class="fa-solid fa-chevron-left"></i></div>
+                    <div class="nav-arrow arrow-right" id="btn-next" onclick="changeStep(1)"><i class="fa-solid fa-chevron-right"></i></div>
+
+                    <div class="screens-container">
+                        
+                        <!-- ECRÃ 1: HUD TECH (BANNER INICIAL) -->
+                        <div class="screen active" id="s1" style="background-color: #050505;">
+                            <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; position: relative;">
+                                <i class="fa-solid fa-expand" style="font-size: 7rem; color: rgba(228, 0, 43, 0.05);"></i>
+                                <div style="position: absolute; border: 1px solid var(--kfc-red); width: 140px; height: 140px; border-radius: 10px; animation: pulseHUD 2s infinite;"></div>
+                                <div style="position: absolute; width: 40px; height: 40px; border-left: 2px solid var(--kfc-red); border-top: 2px solid var(--kfc-red); top: 150px; left: 50px;"></div>
+                                <div style="position: absolute; width: 40px; height: 40px; border-right: 2px solid var(--kfc-red); border-bottom: 2px solid var(--kfc-red); bottom: 150px; right: 50px;"></div>
                             </div>
-                            <!-- Banner Tease -->
-                            <div class="rich-media-ad">
-                                <div class="ad-step step-tease">
-                                    <img src="https://upload.wikimedia.org/wikipedia/en/b/bf/KFC_logo.svg" class="ad-logo" alt="KFC Logo">
-                                    <p class="ad-title">WHAT'S FOR LUNCH?</p>
-                                    <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.8;">TAP TO FIND OUT</p>
-                                </div>
+                            <div class="overlay">
+                                <div class="tagline">System Active</div>
+                                <h2>Lunch Detector<br>Initializing...</h2>
+                                <p>Fome detetada nas proximidades. Queres saber onde almoçar?</p>
+                                <button class="cta-btn primary" onclick="changeStep(1)">Iniciar Busca</button>
                             </div>
-                            <div class="mock-article">
-                                <div class="mock-text"></div>
-                                <div class="mock-text"></div>
-                                <div class="mock-text short"></div>
+                            <style>@keyframes pulseHUD { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.05); } }</style>
+                        </div>
+
+                        <!-- ECRÃ 2: STREETWISE 3 -->
+                        <div class="screen" id="s2" style="background-image: url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80');">
+                            <div class="overlay">
+                                <div class="tagline">South Africa Classic</div>
+                                <h2>Streetwise 3</h2>
+                                <p>3 pedaços do frango original + batatas fritas médias. O herói local.</p>
+                                <button class="cta-btn" onclick="changeStep(1)">Explorar Menus</button>
                             </div>
                         </div>
-                    </div>
-                    <p class="step-label">01. O GANCHO</p>
-                    <p class="step-desc">O anúncio aparece no scroll de notícias. O design é focado no branding KFC e na curiosidade.</p>
-                </div>
 
-                <!-- PASSO 2 -->
-                <div class="mockup-item">
-                    <div class="phone-frame">
-                        <div class="phone-screen">
-                            <div class="mock-nav"><i class="fa-solid fa-bars"></i> <span>Daily News</span> <i class="fa-solid fa-magnifying-glass"></i></div>
-                            <!-- Banner Radar -->
-                            <div class="rich-media-ad" style="height: 100%;">
-                                <div class="ad-step" style="height: 600px; background: #000;">
-                                    <div class="radar-container">
-                                        <div class="radar"></div>
-                                        <div class="radar-line"></div>
-                                    </div>
-                                    <p class="ad-title" style="color: var(--kfc-red);">SCANNING FOR LUNCH...</p>
-                                    <p style="color: white; font-size: 0.8rem; margin-top: 15px;">Detecting nearby KFC stores</p>
-                                </div>
+                        <!-- ECRÃ 3: DUNKED WINGS -->
+                        <div class="screen" id="s3" style="background-image: url('https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80');">
+                            <div class="overlay">
+                                <div class="tagline">Fan Favourite</div>
+                                <h2>Dunked Wings</h2>
+                                <p>10 asas deliciosamente mergulhadas no nosso molho icónico.</p>
+                                <button class="cta-btn" onclick="changeStep(1)">Ainda com fome?</button>
                             </div>
                         </div>
-                    </div>
-                    <p class="step-label">02. A INTERAÇÃO</p>
-                    <p class="step-desc">Ao clicar, o banner expande-se ou ativa a animação de radar. O sistema acede ao GPS do browser.</p>
-                </div>
 
-                <!-- PASSO 3 -->
-                <div class="mockup-item">
-                    <div class="phone-frame">
-                        <div class="phone-screen">
-                            <div class="mock-nav"><i class="fa-solid fa-bars"></i> <span>Daily News</span> <i class="fa-solid fa-magnifying-glass"></i></div>
-                            <!-- Banner Result -->
-                            <div class="rich-media-ad" style="height: 100%;">
-                                <div class="ad-step" style="height: 600px; background: #111; justify-content: start; padding-top: 50px;">
-                                    <img src="https://www.kfc.co.za/Content/Images/Global/KFC_Logo.png" style="width: 80px;" alt="KFC Logo">
-                                    <h3 style="color: white; margin-top: 30px; font-family: 'Poppins';">LUNCH DETECTED!</h3>
-                                    
-                                    <div class="map-mockup">
-                                        <div style="width: 100%; height: 100%; background: url('https://upload.wikimedia.org/wikipedia/commons/e/e4/Google_Maps_icon_%282020%29.svg') center/contain no-repeat; opacity: 0.1;"></div>
-                                        <i class="fa-solid fa-location-dot map-pin"></i>
-                                    </div>
-
-                                    <div class="distance-tag">KFC Braamfontein - 450m away</div>
-                                    <p style="color: #aaa; font-size: 0.8rem; margin-top: 15px; padding: 0 20px;">You are 5 minutes away from a Streetwise Bucket.</p>
-                                    
-                                    <button class="cta-button">LEVA-ME LÁ <i class="fa-solid fa-chevron-right"></i></button>
-                                </div>
+                        <!-- ECRÃ 4: ZINGER BOX -->
+                        <div class="screen" id="s4" style="background-image: url('https://images.unsplash.com/photo-1513639776629-7b61b0ac49cb?auto=format&fit=crop&w=600&q=80');">
+                            <div class="overlay">
+                                <div class="tagline">The Ultimate Meal</div>
+                                <h2>Zinger Box</h2>
+                                <p>Zinger Burger, 1 pedaço de frango, batatas e bebida. Para os corajosos.</p>
+                                <button class="cta-btn" onclick="changeStep(1)">Ver Radar</button>
                             </div>
                         </div>
-                    </div>
-                    <p class="step-label">03. A CONVERSÃO</p>
-                    <p class="step-desc">O resultado final mostra o mapa real e a distância. O CTA abre o Google Maps diretamente.</p>
-                </div>
 
+                        <!-- ECRÃ 5: RADAR SONAR -->
+                        <div class="screen radar-screen" id="s5">
+                            <div class="radar-container">
+                                <div style="position: absolute; width: 100%; height: 1px; background: rgba(228,0,43,0.2);"></div>
+                                <div style="position: absolute; width: 100%; height: 1px; background: rgba(228,0,43,0.2); transform: rotate(90deg);"></div>
+                                <div class="radar-sweep"></div>
+                                <div class="blip blip-1"></div>
+                                <div class="blip blip-2"></div>
+                                <i class="fa-solid fa-location-crosshairs" style="color: var(--kfc-red); font-size: 2.5rem; z-index: 10; opacity: 0.4;"></i>
+                            </div>
+                            <div class="overlay" style="background: transparent; align-items: center; text-align: center;">
+                                <h2 style="color: white; font-size: 1.3rem;">Scanning area...</h2>
+                                <p style="margin-bottom: 0;">A detetar o KFC mais próximo de ti.</p>
+                                <button class="cta-btn primary" style="margin-top: 25px;" onclick="changeStep(1)">Ver Localização</button>
+                            </div>
+                        </div>
+
+                        <!-- ECRÃ 6: RESULTADO FINAL -->
+                        <div class="screen" id="s6" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80');">
+                            <div class="overlay">
+                                <div class="tagline">Lunch Detected!</div>
+                                <h2>KFC<br>Braamfontein</h2>
+                                <p>Estás a apenas <b>180m (4 minutos)</b> do paraíso crocante.</p>
+                                <button class="cta-btn primary">Leva-me lá agora</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="tech">
+        <!-- 4. SECTION CARDS EXATAMENTE COMO NO PRINT -->
+        <section class="cards-section">
             <h2>Porquê este Formato?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; text-align: left;">
-                
-                <div style="background: #222; padding: 30px; border-radius: 20px;">
-                    <i class="fa-solid fa-bolt" style="color: var(--kfc-red); font-size: 2rem;"></i>
-                    <h3 style="margin: 20px 0;">Performance</h3>
-                    <p style="color: #ccc; font-size: 0.9rem;">Carrega 5x mais rápido que uma WebApp. O utilizador não precisa de sair da página para decidir o almoço.</p>
+            <div class="cards-container">
+                <div class="info-card">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3>Performance</h3>
+                    <p>Carrega 5x mais rápido que uma WebApp. O utilizador não precisa de sair da página para decidir o almoço.</p>
                 </div>
-
-                <div style="background: #222; padding: 30px; border-radius: 20px;">
-                    <i class="fa-solid fa-fingerprint" style="color: var(--kfc-red); font-size: 2rem;"></i>
-                    <h3 style="margin: 20px 0;">Personalização</h3>
-                    <p style="color: #ccc; font-size: 0.9rem;">O conteúdo do anúncio muda dinamicamente com base na localização (Latitude/Longitude) de cada utilizador na África do Sul.</p>
+                <div class="info-card">
+                    <i class="fa-solid fa-fingerprint"></i>
+                    <h3>Personalização</h3>
+                    <p>O conteúdo do anúncio muda dinamicamente com base na localização (Latitude/Longitude) de cada utilizador na África do Sul.</p>
                 </div>
-
-                <div style="background: #222; padding: 30px; border-radius: 20px;">
-                    <i class="fa-solid fa-chart-pie" style="color: var(--kfc-red); font-size: 2rem;"></i>
-                    <h3 style="margin: 20px 0;">Métricas Reais</h3>
-                    <p style="color: #ccc; font-size: 0.9rem;">Rastreamos não só os cliques, mas o tempo de interação com o radar e a intenção de visita à loja (cliques no mapa).</p>
+                <div class="info-card">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <h3>Métricas Reais</h3>
+                    <p>Rastreamos não só os cliques, mas o tempo de interação com o radar e a intenção de visita à loja (cliques no mapa).</p>
                 </div>
-
             </div>
         </section>
 
-        <section id="footer">
-            <h1 style="font-size: 2rem;">IT'S FINGER LICKIN' GOOD</h1>
-            <p style="color: #888;">KFC South Africa • Campanha de Almoço • Proposta Rich Media 2024</p>
-        </section>
+        <!-- 5. FOOTER EXATAMENTE COMO NO PRINT -->
+        <footer class="footer-section">
+            <div class="footer-logo">It's Finger Lickin' Good</div>
+            <div class="footer-sub">KFC South Africa • Campanha de Almoço • Proposta Rich Media 2024</div>
+        </footer>
 
     </div>
 
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+
+        function updateNavigation() {
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+
+            // Lógica de setas pedida:
+            if (currentStep === 1) {
+                btnPrev.classList.add('hidden');
+                btnNext.classList.remove('hidden');
+            } 
+            else if (currentStep === totalSteps) {
+                btnPrev.classList.remove('hidden');
+                btnNext.classList.add('hidden');
+            } 
+            else {
+                btnPrev.classList.remove('hidden');
+                btnNext.classList.remove('hidden');
+            }
+
+            // Atualiza barras de progresso
+            for(let i=1; i<=totalSteps; i++) {
+                const bar = document.getElementById(`b${i}`);
+                bar.classList.remove('active', 'viewed');
+                if (i < currentStep) bar.classList.add('viewed');
+                if (i === currentStep) bar.classList.add('active');
+            }
+        }
+
+        function changeStep(dir) {
+            document.getElementById(`s${currentStep}`).classList.remove('active');
+            currentStep += dir;
+            if (currentStep > totalSteps) currentStep = totalSteps;
+            if (currentStep < 1) currentStep = 1;
+            document.getElementById(`s${currentStep}`).classList.add('active');
+            updateNavigation();
+        }
+
+        updateNavigation();
+    </script>
 </body>
 </html>
